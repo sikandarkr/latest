@@ -1,0 +1,16 @@
+export const register_request = {
+    REGISTER_REQUEST : "REGISTER_REQUEST",
+    REGISTER_SUCCESS : "REGISTER_SUCCESS",
+    REGISTER_ERROR : "REGISTER_ERROR",
+}
+export const login_request = {
+    LOGIN_REQUEST : "LOGIN_REQUEST",
+    LOGIN_SUCCESS : "LOGIN_SUCCESS",
+    LOGIN_ERROR : "LOGIN_ERROR",
+}
+export const profile_request = {
+    PROFILES_REQUEST : "PROFILES_REQUEST",
+    PROFILES_SUCCESS : "PROFILES_SUCCESS",
+    PROFILES_ERROR : "PROFILES_ERROR",
+}
+
