@@ -1,14 +1,15 @@
 import React,{Component} from 'react';
 import { Redirect,withRouter } from 'react-router-dom';
 import first from '../../img/first.gif';
-import {Bootstrap, Grid, Row, Col,Container,Button,Form,FormControl,Dropdown,Navbar, Nav, NavItem, NavDropdown, Glyphicon} from 'react-bootstrap';
+import {Bootstrap, Grid, Row} from 'react-bootstrap';
 import {Link, Router, Route} from "react-router";
 import {connect} from 'react-redux'
 import {loginUser} from '../../redux/actions/loginUser';
 import NavDesktop from '../../component/common/Navbar/PrivateNav/NavDesktop';
 import NavMobile from '../../component/common/Navbar/PrivateNav/NavMobile';
 import NavTablet from '../../component/common/Navbar/PrivateNav/NavTablet';
-import {Desktop, Mobile, Tablet} from '../../component/common/Devices';
+import NavThinkpad from '../../component/common/Navbar/PrivateNav/NavThinkpad'
+import {Desktop, Mobile, Tablet, ThinkPad, Default} from '../../component/common/Devices';
 import NavNoAuth from '../../component/common/Nav';
 import logo from '../../img/appiness-logo.png';
 import _ from 'loadsh';
@@ -17,18 +18,28 @@ class TopNavbar extends Component{
         email:"",
         password:""
     }
+    componentDidMount(){
+        document.body.addEventListener('click', this.myHandler);
+    }
+    myHandler = () =>{
+        console.log("hhhhhh...................");
+    }
     onChangeHandler = (e) =>{
         this.setState({
            [e.target.id] :e.target.value
         })
     }
+    onSearch = () =>{
+        console.log("clicked search.........");
+    }
     
     submitHandler =() =>{
         const data = this.state;
         this.props.Login(data, this.props.history);
-        console.log(' LOGING ', this.props);
-        // this.props.history.push(`/u`)
-        // return <Redirect to='/profile' />
+    }
+    LogoutHandler = () =>{
+        localStorage.removeItem('Authorization');
+        this.props.history.push('/login');
     }
     render(){
 
@@ -38,21 +49,35 @@ class TopNavbar extends Component{
                    localStorage.getItem("Authorization")?(
                        <div>
                             <Desktop>
-                                <NavDesktop/>
+                                <NavDesktop
+                                    onSearch={this.onSearch}
+                                    Logout={this.LogoutHandler}
+                                />
                             </Desktop>
                             <Mobile>
-                                <NavMobile/>
+                                <NavMobile
+                                    onSearch={this.onSearch}
+                                    Logout={this.LogoutHandler}
+                                />
                             </Mobile>
                             <Tablet>
-                                <NavTablet/>
+                                <NavTablet
+                                    onSearch={this.onSearch}
+                                    Logout={this.LogoutHandler}
+                                />
                             </Tablet>
+                            <ThinkPad>
+                                <NavThinkpad
+                                    onSearch={this.onSearch}
+                                    Logout={this.LogoutHandler}
+                                />
+                            </ThinkPad>
                         </div>
-                    //    <AuthNav {...this.props} />
-                    // <AuthNav />
                    ):(
                         <NavNoAuth
                             onChangeHandler={this.onChangeHandler}
                             submitHandler={this.submitHandler}
+                            Logout={this.LogoutHandler}
                         /> 
                    )
               }  

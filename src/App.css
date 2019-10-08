@@ -2,13 +2,9 @@
     background-color: red;
 }
 .register-page{
-    /* display:flex;
-    flex-direction: column; */
     width:50% !important;
     background-color:white;
     box-shadow: 0.1px 0.1px 0.1px 0.1px #888888; 
-  
-    /* overflow: scroll; */
 }
 .register-form{
    margin-left:10% !important;
@@ -23,7 +19,6 @@
     top: 25%;  
     bottom: 25%;  
     margin: auto;  
-    
     height:15% !important;
     width:15% !important;
 }
@@ -55,18 +50,12 @@
     background-color: blue;
     height: 100% !important;
     width:100% !important;
+}
 
-}
-.search-icon{
-    font-size:20px !important;
-    background-color:white !important;
-    margin-top:2% !important;
-    border-left:1px;
-    /* margin-left:-10px !important; */
-}
-.nav-dropdown{
+
+/* .nav-dropdown{
     margin-left:5% !important;
-}
+} */
 .input_login_password{
     margin-left:1% !important;
     border: none !important;
@@ -79,34 +68,19 @@
     border-radius: 5px !important;
     border: none !important;
     border-color:gray !important;
-    
 }
 .input-login{
     border: none !important;
     outline: none !important;
     border-radius: 5px !important;
 }
-.search-div{
-    display: flex;
-    flex-direction: row;
-    width:60% !important;
-    background-color: white !important;
-    border-radius: 5px !important;
-    height:30px !important;
-}
+
 .nav-profile{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.input-search{
-    box-shadow: none;
-    border: none !important;
-    outline: none !important;
-    border-radius: 5px !important;
-    width:90% !important;
-    height:30px !important;
-}
+
 ::-webkit-input-placeholder {
     font-style: normal;
     text-transform: capitalize;

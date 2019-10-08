@@ -1,29 +1,50 @@
 import React,{Component} from 'react';
 import logo from '../../../../../src/img/appiness-logo.png';
-import {FaSistrix,FaAngleDown} from 'react-icons/fa';
-import {Bootstrap, Grid, Row, Col,Container,Button,Form,FormControl,Dropdown,Navbar, Nav, NavItem, NavDropdown, Glyphicon} from 'react-bootstrap';
+import {FaSistrix,FaCaretDown} from 'react-icons/fa';
+import './privatenav.css';
+import { Row, Col} from 'react-bootstrap';
 class NavMobile extends Component{
+    state = {
+        show:false
+    }
+    
+    dropDownHandler = () =>{
+        this.setState(
+            {
+                show:!this.state.show
+            }
+        )
+    }
     render(){
         return(
             <div>
-            <Row>
-            <Col xs={3}>Logo</Col>
-            <Col xs={5}>
-                <div className="search-div">
-                <input className="input-search" type="text" placeholder="Enter your search"/>
-                <FaSistrix className="search-icon"/>
+                <Row>
+                    <Col xs={2}>Logo</Col>
+                    <Col xs={9}>
+                        <div className="search-div-mobile">
+                            <input className="input-search-mobile" type="text" placeholder="Search"/>
+                           <div className="search-btn-mobile"> <FaSistrix className="search-icon-mobile"/></div>
+                        </div>
+                    </Col>
+                    <Col xs={1}>
+                        <div>
+                            <div className="nav-profile">
+                                <div className="nav-dropdown"><FaCaretDown className="c-down" onClick={this.dropDownHandler}/></div>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>     
+                {this.state.show?(
+                    <div className="dropdown-custom">
+                    <ul className="list-item">
+                        <li className="item">Settings</li>
+                        <li className="item">Q AND A</li>
+                        <li className="item">Manage Account</li>
+                        <li className="item">About Us</li>
+                        <li className="item" onClick={this.props.Logout}>Logout</li>
+                    </ul>
                 </div>
-            </Col>
-            <Col xs={4}>
-                <div>
-                    <div className="nav-profile">
-                        <div><img src={logo} height="30px" width="30px"/>Image</div>
-                        <div className="nav-dropdown"><FaAngleDown/></div>
-                    </div>
-                </div>
-            </Col>
-        </Row>
-                
+                ):null}   
             </div>
         )
     }

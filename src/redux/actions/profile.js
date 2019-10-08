@@ -1,6 +1,6 @@
 import {profile_request} from '../constant/constants'
 import axios from 'axios';
-const apiUrl ='http://localhost:5000/api/users/profiles';
+const apiUrl ='http://localhost:5000/api/search/users';
 export  const  apiRequest=()=>{
     return{
         type:profile_request.PROFILES_REQUEST
@@ -8,21 +8,23 @@ export  const  apiRequest=()=>{
 }
 
 export const fetchData = (data) => {
-    console.log("here is your data...");
+    console.log("here is your data...",data);
   return {
     type: profile_request.PROFILES_SUCCESS,
     data
   }
 };
 export const getProfiles = (data) => {
-   const  headers = {
+    const  headers = {
         'Content-Type': 'application/json',
-        'x-api-key': 'WeLBwoDvI72rHHhXsiT0'
+        'x-api-key': 'WeLBwoDvI72rHHhXsiT0',
+        'x-access-token':''
     }
     return (dispatch) => {
         dispatch(apiRequest());
-    return axios.post(apiUrl,data, {
-         headers:headers
+    return axios.get(apiUrl,{
+         headers:headers,
+         data:data
         }).then(response=>{
             dispatch(fetchData(response.data))
         })  

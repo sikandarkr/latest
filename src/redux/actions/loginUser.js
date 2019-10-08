@@ -7,7 +7,6 @@ export  const  apiRequest=()=>{
     }
 }
 export const fetchData = (data) => {
-    console.log("here is your data...");
   return {
     type: login_request.LOGIN_SUCCESS,
     data
@@ -23,10 +22,11 @@ export const loginUser = (data, browserHistory) => {
     return axios.post(apiUrl,data, {
          headers:headers
         }).then(response=>{
-            localStorage.setItem("Authorization",response.data.token);
-            dispatch(fetchData(response.data))
-            console.log('State updating ......')
-            browserHistory.push('/profile');
+          if(response.data.message==="success"){
+               dispatch(fetchData(response.data))
+                localStorage.setItem("Authorization",response.data.token);
+                browserHistory.push('/profile');
+          }
         })  
         .catch(error=>{
             throw(error);
