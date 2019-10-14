@@ -24,6 +24,8 @@ export const loginUser = (data, browserHistory) => {
         }).then(response=>{
           if(response.data.message==="success"){
                dispatch(fetchData(response.data))
+                localStorage.setItem('displayName',response.data.name);
+                localStorage.setItem('profileImage',response.data.profileUrl)
                 localStorage.setItem("Authorization",response.data.token);
                 browserHistory.push('/profile');
           }

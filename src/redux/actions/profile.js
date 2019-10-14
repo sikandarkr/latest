@@ -14,11 +14,12 @@ export const fetchData = (data) => {
     data
   }
 };
+
 export const getProfiles = (data) => {
     const  headers = {
         'Content-Type': 'application/json',
         'x-api-key': 'WeLBwoDvI72rHHhXsiT0',
-        'x-access-token':''
+        'x-access-token':localStorage.getItem("Authorization")
     }
     return (dispatch) => {
         dispatch(apiRequest());

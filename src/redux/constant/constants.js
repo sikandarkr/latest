@@ -14,3 +14,8 @@ export const profile_request = {
     PROFILES_ERROR : "PROFILES_ERROR",
 }
 
+export const chat_request = {
+    OPEN_MODEL : "OPEN_MODEL",
+    HIDE_MODEL : "HIDE_MODEL",
+    PROFILES_ERROR : "PROFILES_ERROR",
+}

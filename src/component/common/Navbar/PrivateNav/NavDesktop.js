@@ -33,7 +33,7 @@ class NavDesktop extends Component{
             <Col xs={1}>
                 <div>
                     <div className="nav-profile">
-                        <div><img src={logo} height="30px" width="30px" alt="logo"/><span className="profile-name">Sikandar</span></div>
+                        <div>{this.props.profileUrl?<img src={this.props.profileUrl} height="30px" width="30px" alt="logo" className="nav-profile-image"/>:<span>loading</span>} {this.props.name?<span className="profile-name">{this.props.name}</span>:<span>loading</span>}</div>
                     </div>
                 </div>
             </Col>

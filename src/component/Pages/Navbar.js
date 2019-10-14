@@ -42,7 +42,8 @@ class TopNavbar extends Component{
         this.props.history.push('/login');
     }
     render(){
-
+        let name = localStorage.getItem("displayName");
+        let profileUrl = localStorage.getItem("profileImage");
         return(
            <div className="navbar-top">       
               {
@@ -52,6 +53,8 @@ class TopNavbar extends Component{
                                 <NavDesktop
                                     onSearch={this.onSearch}
                                     Logout={this.LogoutHandler}
+                                    name={name}
+                                    profileUrl={profileUrl}
                                 />
                             </Desktop>
                             <Mobile>
